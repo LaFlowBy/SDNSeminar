@@ -344,7 +344,8 @@
 % to submit to, of course. )
 
 \usepackage[nolist]{acronym}
-
+\usepackage[backend=bibtex]{biblatex}
+\addbibresource{sdn.bib}
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
@@ -353,7 +354,7 @@
 %
 % paper title
 % can use linebreaks \\ within to get better formatting as desired
-\title{\ac{sdn} - Usage in IoT}
+\title{Comparing caching approaches with \ac{sdn} for \ac{iot} applications}
 
 
 % author names and affiliations
@@ -398,7 +399,16 @@
 
 % make the title area
 \maketitle
+\section{Preliminary structure}
 
+\begin{enumerate}
+	\item Abstract
+	\item Introduction
+	\item \ac{sdn}
+	\item \ac{sdn} in \ac{iot}
+	\item Comparing caching aproaches with \ac{sdn} for \ac{iot} applications
+	\item Conclusion
+\end{enumerate}
 
 \begin{abstract}
 %\boldmath
@@ -427,16 +437,18 @@ The abstract goes here.
 \IEEEpeerreviewmaketitle
 
 
-
 \section{Introduction}
 % no \IEEEPARstart
-\acl{sdn} is an approach to network management that uses abstraction to...
+\acl{sdn} is an approach to network management that uses abstraction to... \cite{MASOUDI20161} \cite{Jefia2018-pj} \cite{Hussain2022-tc}
 
-\subsection{Usage}
-SDN is commonly used in data centers, cloud environments, and enterprise networks to...
+\subsection{Applications of SDN}
+SDN is commonly used in data centers, cloud environments, and enterprise networks to... \cite{nunez2023briefoverviewsoftwaredefinednetworking} \cite{Hussain2022-tc}
 
-\section{Usage in \ac{iot}}
-A big section where \ac{sdn} is used is \ac{iot}. There are a lot of possibilities...
+\section{\ac{sdn} in \ac{iot}}
+A big section where \ac{sdn} is used is \ac{iot}. There are a lot of possibilities... \cite{Li2020-lx} \cite{8777339} \cite{10.1145/3102304.3102319}
+
+\subsection{Caching in \ac{iot} with \ac{sdn}}
+ \cite{doi:10.1155/2014/735142} \cite{Katta2016-tr} \cite{Jazaeri2023-bu} \cite{10.1007/s10586-023-04023-9} \cite{Ruggeri2021-qs}
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
@@ -553,13 +565,9 @@ A big section where \ac{sdn} is used is \ac{iot}. There are a lot of possibiliti
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
 
-\end{thebibliography}
+\printbibliography
 
 
 \begin{acronym}
