@@ -96,31 +96,31 @@
 
 	\subsection{Applications of SDN}
 
-	SDN networks are used for data centers, enterprise networks, optical networks and even home and small buisinesses. \ac{sdn} enables customization and deployment of new services or policies, because the independence of the control and the data plane. Therefore \ac{sdn} can be used in various network environements. Data centers operate large-scale networks with high traffic, traffic management and many policies. Here \ac{sdn} can be used to manage the network traffic and to provide a better utilization of the network resources. Generally the same works for enterprise networks. Also for optical networks the \ac{onf} provides specialized protocols to integrate multible network technologies. And even for small networks it turns out that using \ac{sdn} is usefull. Having a single point of control makes it easier to manage the network. \cite{Jefia2018-pj} 
+	SDN networks are used for data centers, enterprise networks, optical networks and even homes and small businesses. \ac{sdn} enables customization and deployment of new services or policies, because of the independence of the control and the data plane. Therefore \ac{sdn} can be used in various network environments. Data centers operate large-scale networks with high traffic, traffic management and many policies. Here \ac{sdn} can be used to manage the network traffic and to provide a better utilization of the network resources. Generally, the same works for enterprise networks. Also for optical networks, the \ac{onf} provides specialized protocols to integrate multiple network technologies. And even for small networks it turns out that using \ac{sdn} is useful. Having a single point of control makes it easier to manage the network. \cite{Jefia2018-pj} 
 
 
 
 	\section{\ac{sdn} in \ac{iot}}
 	\label{section:sdn-iot}
 
-	\acf{iot} connects devices with limited ressources to create various services. \ac{iot} applications are created to mostly collect data and executing tasks for various domains, like industrial process systems, traffic monitoring and a large varienty of end user applications. Often they result in large-scale networks with many heterogeneous devices and protocols. \cite{Li2020-lx} Therefore, \ac{iot} faces following problems: 
+	\acf{iot} connects devices with limited resources to create various services. \ac{iot} applications are created to mostly collect data and execute tasks for multiple domains, like industrial process systems, traffic monitoring and a large variety  of end-user applications. Often they result in large-scale networks with many heterogeneous devices and protocols. \cite{Li2020-lx} \citeauthor{10.1007/s10586-023-04023-9} identified that \ac{iot} faces the following problems: 
 
 	\begin{itemize}
-		\item Difficulties in control and management.
-		\item Difficult to programm and configre
-		\item Long service provisioning
-		\item Ressources are not fully used \cite{10.1145/3102304.3102319}
+		\item Difficulties in control and management, due to the geographically distributed heterogeneous devices in various domains.
+		\item Difficult to program and configure, due to different devices with different capabilities, like memory constraints, bandwidth and energy usage.
+		\item Long service provisioning, due to the need for a full development cycle, including installing, configuring and testing the devices. 
+		\item Resources are not fully used. Devices haven't been completely considered as network resources. \cite{10.1145/3102304.3102319}
 	\end{itemize}
 
-	Missing flexibiltiy, intelligence and application specific controls, lead to these problems. \ac{sdn} brings a global view on the network and provides capabilites to use network resources effiently. It reduces the management and brings flexibilty to mitigate the problems of \ac{iot}.
+	Missing flexibility, intelligence and application-specific controls, lead to these problems. \ac{sdn} brings a global view on the network and provides capabilities to use network resources efficiently. It reduces the management and brings flexibility to mitigate the problems of \ac{iot}.
 
-	\ac{iot} devices needs to be managed a lot due to the need of configurations, reconfigurations, ressource allocations and communication between the devices. \cite{10.1145/3102304.3102319} The concept of a central controller of a \ac{sdn} network fits the need for a central management for all devices in an \ac{iot} network. The controller can be used to activate and deactivate sensors, based on the currnet needs. Also the routing of sensor data can be optimized. \cite{Li2020-lx} There exist multible frameworks for managing \ac{iot} devices with \ac{sdn}. \cite{10.1145/3102304.3102319} The integration is not trivial, since \ac{sdn} maily focuses on controlling traffic, it lacks the ability of controlling sensor hardware and \ac{iot} applications. \cite{Li2020-lx}
+	\ac{iot} devices need to be managed a lot, due to the need for configurations, reconfigurations, resource allocations and communication between the devices. \cite{10.1145/3102304.3102319} The concept of a central controller of a \ac{sdn} network fits the need for central management for all devices in an \ac{iot} network. The controller can be used to activate and deactivate sensors, based on the current needs. Also, the routing of sensor data can be optimized. \cite{Li2020-lx} There exist multiple frameworks for managing \ac{iot} devices with \ac{sdn}. \cite{10.1145/3102304.3102319} The integration is not trivial, since \ac{sdn} mainly focuses on controlling traffic. It lacks the ability to control sensor hardware and \ac{iot} applications. \cite{Li2020-lx}
 
-	Another application of \ac{sdn} for \ac{iot} is for cellular networks. There are multible proposals for \ac{sdn} based cellular networks. With policies and a central controller, abstractions in geographical areas, packaet incpection, load balancing and packet processing, can be achieved. \cite{10.1145/3102304.3102319}
+	Another application of \ac{sdn} for \ac{iot} is for cellular networks. There are multiple proposals for \ac{sdn}-based cellular networks. With policies and a central controller, abstractions in geographical areas, load balancing, packet inspection and packet processing can be achieved. \cite{10.1145/3102304.3102319}
 
-	The most common device in \ac{iot} are sensors. For sensor networks there are also proposals for \ac{sdn} based solutions. One example is the \ac{wsnsdn}. It consists of a \ac{bs} and several sensor nodes. The \ac{bs} is controlled by the \ac{sdn} controller, managing the routing instead of the sensor nodes. The sensor nodes also contain flow tables like switches in the \ac{sdn} architecture. \cite{Li2020-lx} There also exist architectures using reconfiguration based on the customer needs. That enables sharing a single infrastructure for multible applications. \ac{sof} also propose reprogramming and retasking the sensor nodes with the control plane. \cite{10.1145/3102304.3102319}
+	The most common device in \ac{iot} are sensors. For sensor networks, there are also proposals for \ac{sdn}-based solutions. One example is the \ac{wsnsdn}. It consists of a \ac{bs} and several sensor nodes in a classical architecture. The \ac{bs} is controlled by the \ac{sdn} controller, managing the routing instead of the sensor nodes. The sensor nodes also contain flow tables like switches in the \ac{sdn} architecture. \cite{10.1145/3102304.3102319} There also exist architectures using reconfiguration based on customer needs. That enables sharing a single infrastructure for multiple applications. \ac{sof} also propose reprogramming and retasking the sensor nodes with the control plane. \cite{Li2020-lx} 
 
-	\ac{sdn} based \ac{iot} networks are also used for imporved security, enabling authentication and authorization of the devices on the controller. It helps running distributed firewalls or detecting unauthorized malicious devices. \cite{10.1145/3102304.3102319}
+	\ac{sdn} based \ac{iot} networks are also used for improved security, enabling authentication and authorization of the devices on the controller. With a global view over the network, approvals of connections can be handled securely by the controller. It also helps run distributed firewalls or detect unauthorized malicious devices. \cite{10.1145/3102304.3102319} It limits the impact caused by security threads for the most devices in the network. The controller on the other hand promotes to a central target for security threads. \cite{Li2020-lx}
 
 	There are also challenges for \ac{sdn} based \ac{iot} applications.
 
@@ -129,7 +129,7 @@
 	\section{Caching in \ac{iot} with \ac{sdn}}
 	\label{section:caching}
 
-	\cite{doi:10.1155/2014/735142} \cite{Katta2016-tr} \cite{Jazaeri2023-bu} \cite{10.1007/s10586-023-04023-9} \cite{Ruggeri2021-qs}
+	\cite{Katta2016-tr} \cite{Jazaeri2023-bu} \cite{10.1007/s10586-023-04023-9} \cite{Ruggeri2021-qs}
 
 	\section{Conclusion}
 	\label{section:conclusion}
