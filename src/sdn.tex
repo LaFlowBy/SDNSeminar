@@ -100,36 +100,129 @@
 
 
 
-	\section{\ac{sdn} in \ac{iot}}
+	\section{Using \ac{sdn} in \ac{iot} Applications}
 	\label{section:sdn-iot}
 
-	\acf{iot} connects devices with limited resources to create various services. \ac{iot} applications are created to mostly collect data and execute tasks for multiple domains, like industrial process systems, traffic monitoring and a large variety  of end-user applications. Often they result in large-scale networks with many heterogeneous devices and protocols. \cite{Li2020-lx} \citeauthor{10.1007/s10586-023-04023-9} identified that \ac{iot} faces the following problems: 
+	\acf{iot} connects devices with limited resources to create various services. \ac{iot} applications are created to mostly collect data and execute tasks for multiple domains, like industrial process systems, traffic monitoring and a large variety  of end-user applications. Often they result in large-scale networks with many heterogeneous devices and protocols. \cite{Li2020-lx} \citeauthor{Li2020-lx} identified that \ac{iot} faces the following problems: 
 
 	\begin{itemize}
 		\item Difficulties in control and management, due to the geographically distributed heterogeneous devices in various domains.
 		\item Difficult to program and configure, due to different devices with different capabilities, like memory constraints, bandwidth and energy usage.
 		\item Long service provisioning, due to the need for a full development cycle, including installing, configuring and testing the devices. 
-		\item Resources are not fully used. Devices haven't been completely considered as network resources. \cite{10.1145/3102304.3102319}
+		\item Resources are not fully used. Devices haven't been completely considered as network resources. \cite{Sahrish2017}
 	\end{itemize}
 
 	Missing flexibility, intelligence and application-specific controls, lead to these problems. \ac{sdn} brings a global view on the network and provides capabilities to use network resources efficiently. It reduces the management and brings flexibility to mitigate the problems of \ac{iot}.
 
-	\ac{iot} devices need to be managed a lot, due to the need for configurations, reconfigurations, resource allocations and communication between the devices. \cite{10.1145/3102304.3102319} The concept of a central controller of a \ac{sdn} network fits the need for central management for all devices in an \ac{iot} network. The controller can be used to activate and deactivate sensors, based on the current needs. Also, the routing of sensor data can be optimized. \cite{Li2020-lx} There exist multiple frameworks for managing \ac{iot} devices with \ac{sdn}. \cite{10.1145/3102304.3102319} The integration is not trivial, since \ac{sdn} mainly focuses on controlling traffic. It lacks the ability to control sensor hardware and \ac{iot} applications. \cite{Li2020-lx}
+	\ac{iot} devices need to be managed a lot, due to the need for configurations, reconfigurations, resource allocations and communication between the devices. \cite{Sahrish2017} The concept of a central controller of a \ac{sdn} network fits the need for central management for all devices in an \ac{iot} network. The controller can be used to activate and deactivate sensors, based on the current needs. Also, the routing of sensor data can be optimized. \cite{Li2020-lx} There exist multiple frameworks for managing \ac{iot} devices with \ac{sdn}. \cite{Sahrish2017} The integration is not trivial, since \ac{sdn} mainly focuses on controlling traffic. It lacks the ability to control sensor hardware and \ac{iot} applications. \cite{Li2020-lx}
 
-	Another application of \ac{sdn} for \ac{iot} is for cellular networks. There are multiple proposals for \ac{sdn}-based cellular networks. With policies and a central controller, abstractions in geographical areas, load balancing, packet inspection and packet processing can be achieved. \cite{10.1145/3102304.3102319}
+	Another application of \ac{sdn} for \ac{iot} is for cellular networks. There are multiple proposals for \ac{sdn}-based cellular networks. With policies and a central controller, abstractions in geographical areas, load balancing, packet inspection and packet processing can be achieved. \cite{Sahrish2017}
 
-	The most common device in \ac{iot} are sensors. For sensor networks, there are also proposals for \ac{sdn}-based solutions. One example is the \ac{wsnsdn}. It consists of a \ac{bs} and several sensor nodes in a classical architecture. The \ac{bs} is controlled by the \ac{sdn} controller, managing the routing instead of the sensor nodes. The sensor nodes also contain flow tables like switches in the \ac{sdn} architecture. \cite{10.1145/3102304.3102319} There also exist architectures using reconfiguration based on customer needs. That enables sharing a single infrastructure for multiple applications. \ac{sof} also propose reprogramming and retasking the sensor nodes with the control plane. \cite{Li2020-lx} 
+	The most common device in \ac{iot} are sensors. For sensor networks, there are also proposals for \ac{sdn}-based solutions. One example is the \ac{wsnsdn}. It consists of a \ac{bs} and several sensor nodes in a classical architecture. The \ac{bs} is controlled by the \ac{sdn} controller, managing the routing instead of the sensor nodes. The sensor nodes also contain flow tables like switches in the \ac{sdn} architecture. \cite{Sahrish2017} There also exist architectures using reconfiguration based on customer needs. That enables sharing a single infrastructure for multiple applications. \ac{sof} also propose reprogramming and retasking the sensor nodes with the control plane. \cite{Li2020-lx} Applying \ac{sdn} to low-power Wi-Fi networks, wireless sensor can achieve a lower power consumption because of low control traffic. \cite{Manguri2022-vp}
 
-	\ac{sdn} based \ac{iot} networks are also used for improved security, enabling authentication and authorization of the devices on the controller. With a global view over the network, approvals of connections can be handled securely by the controller. It also helps run distributed firewalls or detect unauthorized malicious devices. \cite{10.1145/3102304.3102319} It limits the impact caused by security threads for the most devices in the network. The controller on the other hand promotes to a central target for security threads. \cite{Li2020-lx}
+	\ac{sdn} based \ac{iot} networks are also used for improved security, enabling authentication and authorization of the devices on the controller. With a global view over the network, approvals of connections can be handled securely by the controller. It also helps run distributed firewalls or detect unauthorized malicious devices. \cite{Sahrish2017} It limits the impact caused by security threads for the most devices in the network. The controller on the other hand promotes to a central target for security threads. \cite{Li2020-lx}
 
-	There are also challenges for \ac{sdn} based \ac{iot} applications.
+	\ac{iot} and \ac{sdn} are both topics, that are widely researched and also used in the industry. The combination of them is still at an earlier stage. There are many proposals for standards, but no practical implementations are available. Yet, there is still a lot of interest proposing solutions for the different applications already mentioned. \cite{Manguri2022-vp} 
 
-	\cite{8777339} \cite{10.1145/3102304.3102319}
+	The main challenge to efficiently use \ac{sdn} networks for \ac{iot} applications is to use all network-wide inforamtion and knowledge to manage the network form the control plane. For that data needs to be coordinated efficiently between the devices. Only that way a collective intelligence can be achieved. Edge Computing tries to process data closer to the source rather that centralized in the cloud. It reduces latency and uses the existing ressouces in the network more efficiently. \cite{edge-computing} \citeauthor{Li2020-lx} states different research approachs to use that concept also in \ac{iot} applications using \ac{sdn}. 
+
+	
+
+
+
+
+
+
+	\cite{8777339} \cite{Sahrish2017}
 
 	\section{Caching in \ac{iot} with \ac{sdn}}
 	\label{section:caching}
 
-	\cite{Katta2016-tr} \cite{Jazaeri2023-bu} \cite{10.1007/s10586-023-04023-9} \cite{Ruggeri2021-qs}
+	Next to edge computing, caching data on the edges of the network is another strategy to optimize the usage of network resources, ensuring lower network latency, energy consumption and higher availability. \cite{caching-1} \cite{caching-2} \cite{caching-4} Without caching, popular content will be transmitted repeatedly, wasting network resources. Especially devices receiving the same information simultaneously. Often the content needs to be location-sensitive, displaying different information on different locations of the world and often the cached contents are only used by the devices in the same areas. To demonstrate the effect of caching  for latency and energy consumption we can look at the results of the caching strategy proposed by \cite{caching-1}. In figure \ref{fig:energy-caching} you can see that the total energy consumption decreases with the cache size. With no caching the energy consumption stays the same. If you use caching, for all strategies the energy consumption decreases significantly by increasing the cache size. The same is shown in figure \ref{fig:latency-caching} for the average response latency. The constant latency with no caching is reduced by caching by more than half.
+
+	The network of a \ac{iot} application using \ac{sdn} and caching at the edge typicaly consists of the following components:
+	\begin{itemize}
+		\item Edge \ac{sdn} nodes: equiped with caching capabilities in order to serve multiple requests within the domian, without contacting the remote cloud
+		\item \ac{sdn} Controller: The central controller has the possibility to see all edge \ac{sdn} nodes to manage their flow tables. It instructs the edge nodes to perform the caching actions. \cite{caching-2}  
+	\end{itemize}
+
+	Also, due to the huge amount of data collected in \ac{iot} networks, caching is needed to process the data locally, before sending it to the cloud. Otherwise useless data may get sent and stored centrally and unnecessary network traffic is produced. \cite{caching-1} It also challanges the core network to allocate network resources for multiple data requests and replies from consumers. \cite{caching-2}
+	A lot of different features are important for caching decisions:
+
+	\begin{itemize}
+		\item redundancy and data unavailability when the device is not available. \cite{caching-1}
+		\item storage costs
+		\item retreival latency
+		\item popularity of the data, which is the number of requests for the same data over a certain amount of time. \cite{caching-2}
+		\item the lifetime of the data, which is the time the data is valid. \cite{caching-2}
+	\end{itemize}
+
+	The caching policies needs to be dynamic. \cite{caching-5} found out that \ac{iot} data follows the Zipf's law with a skewness parameter that can change on a regular basis. The requested data from users of the \ac{iot} applicaion is related to the needs of the users, which is changing during the day. \citeauthor{caching-5} demonstrate that a period of 60 minutes is enough to capture a change in variation in the popularity.  
+
+	The main goal of caching data at the edge is to improve the user experience. Users should not be aware of the complexity of the network. Caching decisions at the edge of a network are complicated, especially with heterogeneous devices. Here \ac{sdn} can help to overcome these challanges with a centralized orchestration. A \ac{sdn} controller can set policies for caching and hide the complexity of the heterogeneous network from the end users. Caching decisions will be decided based on the network-wide information of the controller like the network topology or storage capabilities. When a user makes a request for content produced by some sensor device nearby, the \ac{sdn} controller can identify the location of the content cached and foreward the request to the device, caching the requested data. If the data isn't cached anywhere, the request will be sent to the cloud. \cite{caching-1}
+	There are multiple applications where caching at edge nodes can be applied to improve the efficiency of the network:
+	\begin{itemize}
+		\item Smart health-care: Increased efficiency for processing in real-time with cached data
+		\item Smart cities: Large amounts of data are genereated, which must be processed nearby
+		\item Internet of vehicles: For vehicle-to-vehicle communication, the collected data is only useful for other vehicles nearby.
+		\item Intensive computation systems: Require low latency times.
+		\item Wireless sensor networks \cite{caching-1}
+	\end{itemize}
+
+	Already existing caching strategies that are designed for traditiondal internet and multimedia contents cannot be directly applied to \ac{iot} applications. Data like Youtube videos or movies won't change over time once available. They can be accessed even years after they are stored. Data stored in \ac{iot} networks are mostly transient, they expire after a certain amount of time. For example timeseries data, like pulse rates or indicators of pollution, the lifetime of data states how long the data is reliable after being generated. After the expiration, the producer uploads it to the cloud. The heterogenity of the edge devices also makes it hard to use already existing caching strategies. \cite{caching-2}
+
+	The following chapters will present different approaches for caching data in \ac{iot} networks with \ac{sdn} at the edge.
+
+	\subsection{Moth-flame optimization algorithm}
+	In \cite{caching-1} the authors propose a caching strategy using the \ac{mfo}. It is a population-based metaheurist metaheuristic inspired by the navigation behavior of moths. Light sources
+	cause moths to fly in a straight line toward them and fly spirally around a light source when very close. They are using the algorithm to group similar content and determine the optimal locations for caching certain data.
+
+	\begin{figure}
+		\label{fig:energy-caching}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/energy-caching.png}
+		\caption{Total Energy Consumption (mJ) VS cache size \cite{caching-1}}
+	\end{figure}
+
+	\begin{figure}
+		\label{fig:latency-caching}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/latency-caching.png}
+		\caption{Average Response latency (sec) VS cache size \cite{caching-1}}
+	\end{figure}
+
+	\subsection{Using the lifetime for a caching decision}
+	\cite{caching-2} proposes a caching policy also using a \ac{sdn}-controller. 
+	\begin{quote}
+		"Such a policy identifies the \textit{IoT contents} to be cached and \textit{the cachers}, by \textit{jointly} accounting for the \textit{IoT content popularity and lifetime}" \cite{caching-2} 
+	\end{quote}
+
+	Their goal was to prioritze the cache hit ration for the most popular contents which have a longer lifetime expectancy. The policy should reduce the retreival latency and maximaize the content diversity available at the edge domain. The policy should run as a network application on top of the \ac{sdn} Controller using the OpenFlow protocol for the southbound interface. They define the optimal content placement through an \ac{ilp} problem, that include their named objectives. They claim to be the first caching optimization aproach in a distributed edge domain, that are taking the popularity and the lifetime of \ac{iot} data into account. The idea is, that caching very popular content with only a very short lifetime left is less usefull than less popular content with a longer lifetime. Over the longer livetime it may have more total requests that the popular one.
+	The \ac{sdn} Controller instructs the caching actions at regular intervals. Due to the change of popularity over time \cite{caching-5} they decided to set the intervall at 60 minutes. The \ac{sdn} nodes are then storing the data unitl the data lifetime expires or a new caching decision is made. The \ac{sdn} controller monitors the topology and measures the packet loss probability and the link delay to estimate the content retreival latency. Using the OpenFlow protocol it also monitors the capabilities and content statistics of the \ac{sdn} nodes. That gives information about the amount of flow table entries or buffer sizes of the switches. Also the request arrival rates is summed up, by giving the Controller information about all content requests. These informations are used to make the caching decisions.
+	If a node needs to get certain data, it sends a request to the controller, which injects the forwarding rules into the flow table of the \ac{sdn} node, so that it can retreive the data from the cacher directly. To maximize the content diversity, they store only one content copy in the edge network. That reduces traffic transit costs, because more space is available for distinct data and therefore less traffic has to leave the domain requesing data at the cloud. The ability of the \ac{sdn} Controller to use load balancing helps against intra-domain congestion problems. 
+	For the optimal content placement they formulate the problem as an \ac{ilp} problem. It is a NP-hard problem, which makes it computationally intensive and impractical for large-scale applications.Therefore, they propose a heuristic algorithm using a greedy approach to find near-optimal solutions more efficiently. This heuristic evaluates factors such as node storage capacity, network link bandwidth, and the transient nature and popularity of IoT content to make caching decisions.
+	The evaluation of their caching policy shows that it outperforms other caching strategies in terms of cache hit ratio, content diversity, and retrieval latency. They tested their solution in three scenarios to the benchmark of \ac{mpc} which is an aproach not concidering the lifetime of the data into the caching decisions.
+	In all three scenarios \ac{mpfc} achieved lower content retreival latency, higher cache hit rates and higher freshness probabilities.
+	In figures \ref{fig:lifetime-latency}, \ref{fig:lifetime-hitrate} and \ref{fig:lifetime-freshness} you can see the results of the first scenario. You can see that the content retrieval latency and the cache hit rate from \ac{mpfc}(black lines) is better on all cache sizes than \ac{mpc}(blue lines). For the freshnes probability, with increasing cache size, the freshness probability of \ac{mpfc} equals to \ac{mpc}.
+
+	\begin{figure}
+		\label{fig:lifetime-latency}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/fresh-latency.png}
+		\caption{Average content retrieval latency \cite{caching-2}}
+	\end{figure}
+	\begin{figure}
+		\label{fig:lifetime-hitrate}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/fresh-hitrate.png}
+		\caption{Average content retrieval latency \cite{caching-2}}
+	\end{figure}
+	\begin{figure}
+		\label{fig:lifetime-freshness}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/fresh-freshness.png}
+		\caption{Average content retrieval latency \cite{caching-2}}
+	\end{figure}
 
 	\section{Conclusion}
 	\label{section:conclusion}
@@ -148,6 +241,10 @@
 		\acro{wsnsdn}[WSNSDN]{Software-Defined Wireless Sensor Network Framework }
 		\acro{bs}[BS]{Base Station}
 		\acro{sof}[SOF]{Sensor OpenFLow}
+		\acro{mfo}[MFO]{Moth-Flame Optimization}
+		\acro{ilp}[ILP]{Integer Linear Programming}
+		\acro{mpc}[MPC]{Most Popular Contents}
+		\acro{mpfc}[MPFC]{Most Popular Fresh Contents}
 	\end{acronym}
 
 % that's all folks
