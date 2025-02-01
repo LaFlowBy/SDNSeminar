@@ -142,8 +142,9 @@
 
 	The network of a \ac{iot} application using \ac{sdn} and caching at the edge typicaly consists of the following components:
 	\begin{itemize}
-		\item Edge \ac{sdn} nodes: equiped with caching capabilities in order to serve multiple requests within the domian, without contacting the remote cloud
-		\item \ac{sdn} Controller: The central controller has the possibility to see all edge \ac{sdn} nodes to manage their flow tables. It instructs the edge nodes to perform the caching actions. \cite{caching-2}  
+		\item Edge \ac{sdn} nodes: equiped with caching capabilities in order to serve multiple requests within the domian, without contacting the remote cloud \cite{caching-1} \cite{caching-2}  
+		\item \ac{sdn} Controller: The central controller has the possibility to see all edge \ac{sdn} nodes to manage their flow tables. It instructs the edge nodes to perform the caching actions. \cite{caching-1} \cite{caching-2}  
+		\item \ac{iot} gateway: used to transmit data between data plane devices, provides authentication and authorization and ensures safety and security. \cite{caching-1}
 	\end{itemize}
 
 	Also, due to the huge amount of data collected in \ac{iot} networks, caching is needed to process the data locally, before sending it to the cloud. Otherwise useless data may get sent and stored centrally and unnecessary network traffic is produced. \cite{caching-1} It also challanges the core network to allocate network resources for multiple data requests and replies from consumers. \cite{caching-2}
@@ -173,26 +174,8 @@
 
 	The following chapters will present different approaches for caching data in \ac{iot} networks with \ac{sdn} at the edge.
 
-	\subsection{Moth-flame optimization algorithm}
-	In \cite{caching-1} the authors propose a caching strategy using the \ac{mfo}. It is a population-based metaheurist metaheuristic inspired by the navigation behavior of moths. Light sources
-	cause moths to fly in a straight line toward them and fly spirally around a light source when very close. They are using the algorithm to group similar content and determine the optimal locations for caching certain data.
-
-	\begin{figure}
-		\label{fig:energy-caching}
-		\centering
-		\includegraphics[width=0.5\textwidth]{figures/energy-caching.png}
-		\caption{Total Energy Consumption (mJ) VS cache size \cite{caching-1}}
-	\end{figure}
-
-	\begin{figure}
-		\label{fig:latency-caching}
-		\centering
-		\includegraphics[width=0.5\textwidth]{figures/latency-caching.png}
-		\caption{Average Response latency (sec) VS cache size \cite{caching-1}}
-	\end{figure}
-
 	\subsection{Using the lifetime for a caching decision}
-	\cite{caching-2} proposes a caching policy also using a \ac{sdn}-controller. 
+	In \citeyear{caching-2} \cite{caching-2} proposes a caching policy also using a \ac{sdn}-controller. 
 	\begin{quote}
 		"Such a policy identifies the \textit{IoT contents} to be cached and \textit{the cachers}, by \textit{jointly} accounting for the \textit{IoT content popularity and lifetime}" \cite{caching-2} 
 	\end{quote}
@@ -224,6 +207,25 @@
 		\caption{Average content retrieval latency \cite{caching-2}}
 	\end{figure}
 
+	\subsection{Moth-flame optimization algorithm}
+	In \cite{caching-1} from \citeyear{caching-1} the authors propose a caching strategy using the \ac{mfo}. It is a population-based metaheurist metaheuristic inspired by the navigation behavior of moths. Light sources cause moths to fly in a straight line toward them and fly spirally around a light source when very close. They are using the algorithm to group similar content and determine the optimal locations for caching certain data. They also cluster the edge nodes and select cluster heads using their propsed algorithm \ac{mfo-chs}. It furhter reduces the latency and energy consumption in the network.
+	In their architecture, also uses \ac{sdn} with a centralized \ac{sdn} Controller. For southbound communication it also uses the OpenFlow protocol and for the northbound interface RESTful APIs. For the caching decisions, they use two policies, one for decision-making and one for caching replacement. The first one decides with the \ac{mfo-ec} algorithm on a time intervall what data should be cached where. The replacement policy states which data should be deleted, if the cache, the decision-making policy selected, is full. The \ac{sdn} Controller uses topology information and \ac{iot} data to make caching decisions. The algorithm also uses the content freshness and the content popularity as features to make caching descions. From these two features, a caching weights are calculated, which are then used by the \ac{mfo-ec} algorithm. 
+	To create a efficient environment to be able to process massive amounts of data, the authors propse to use \ac{iot} clusters. That should bring a better quality of experience to users. Edge networks are created to be able to better use and share their computational power and resources. With the \ac{sdn} Controller this complexity is hidden to the users. The MFO-CHS algorithm is used to dynamically select the cluster heads. Selecting the best cluster head brings lower end-to-end latency and packet drops. The algorithm tries to select the "fittest" node in the cluster and ensure that the network's energy consumption is at the minimum.  
+
+	\begin{figure}
+		\label{fig:energy-caching}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/energy-caching.png}
+		\caption{Total Energy Consumption (mJ) VS cache size \cite{caching-1}}
+	\end{figure}
+
+	\begin{figure}
+		\label{fig:latency-caching}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/latency-caching.png}
+		\caption{Average Response latency (sec) VS cache size \cite{caching-1}}
+	\end{figure}
+
 	\section{Conclusion}
 	\label{section:conclusion}
 
@@ -245,6 +247,9 @@
 		\acro{ilp}[ILP]{Integer Linear Programming}
 		\acro{mpc}[MPC]{Most Popular Contents}
 		\acro{mpfc}[MPFC]{Most Popular Fresh Contents}
+		\acro{mfo-ec}[MFO-EC]{Moth-Flame Optimization-Edge Caching}
+		\acro{mfo-chs}[MFO-CHS]{Moth-Flame Optimization-Cluster Head Selection}
+
 	\end{acronym}
 
 % that's all folks
