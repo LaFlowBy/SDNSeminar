@@ -1,5 +1,3 @@
- 
-
 \documentclass[conference]{IEEEtran}
 
 \usepackage[nolist]{acronym}
@@ -126,7 +124,7 @@
 
 	\ac{iot} and \ac{sdn} are both topics, that are widely researched and also used in the industry. The combination of them is still at an earlier stage. There are many proposals for standards, but no practical implementations are available. Yet, there is still a lot of interest proposing solutions for the different applications already mentioned. \cite{Manguri2022-vp} 
 
-	The main challenge to efficiently use \ac{sdn} networks for \ac{iot} applications is to use all network-wide inforamtion and knowledge to manage the network form the control plane. For that data needs to be coordinated efficiently between the devices. Only that way a collective intelligence can be achieved. Edge Computing tries to process data closer to the source rather that centralized in the cloud. It reduces latency and uses the existing ressouces in the network more efficiently. \cite{edge-computing} \citeauthor{Li2020-lx} states different research approachs to use that concept also in \ac{iot} applications using \ac{sdn}. 
+	The main challenge to efficiently use \ac{sdn} networks for \ac{iot} applications is to use all network-wide inforamtion and knowledge to manage the network form the control plane. For that data needs to be coordinated efficiently between the devices. Only that way a collective intelligence can be achieved. Edge Computing tries to process data closer to the source rather that centralized in the cloud. It reduces latency and uses the existing ressouces in the network more efficiently. \cite{edge-computing} \citeauthor{Li2020-lx} states different research approaches to use that concept also in \ac{iot} applications using \ac{sdn}. 
 
 	
 
@@ -135,7 +133,7 @@
 
 
 
-	\cite{8777339} \cite{Sahrish2017}
+% 	\cite{8777339} \cite{Sahrish2017}
 
 	\section{Caching in \ac{iot} with \ac{sdn}}
 	\label{sec:caching}
@@ -250,7 +248,7 @@ x		\centering
 	In \cite{caching-1} from \citeyear{caching-1} the authors propose a caching strategy using the \acf{mfo} and cluster the network to get a better \acf{qoe}. It is a population-based metaheuristic inspired by the navigation behavior of moths. Light sources cause moths to fly in a straight line toward them and fly spirally around a light source when very close. They are using the algorithm to group similar content and determine the optimal locations for caching certain data. They cluster the edge nodes and select cluster heads using their propsed algorithm \ac{mfo-chs}.
 	In their architecture, also uses \ac{sdn} with a centralized \ac{sdn} Controller. For southbound communication it uses the OpenFlow protocol and for the northbound interface RESTful APIs. In figure \ref{fig:mfo-architecture} the network architecture is displayed. You can see three layers. The lowest layer are the \ac{iot} devices like sensors or actuators, clusterd. Each one is connected to a \ac{sdn} edge node on the edge computing layer. Here the caches are installed. The nodes are connected to the \ac{sdn} Controller, seeing an overview of the network. The locally distributed \ac{sdn} Controllers are connected to the global \ac{sdn} Controller being in the cloud computing layer. It is coordinating the physical ditribution of the \ac{sdn} Controllers and communication to the cloud. 
 	For the caching decisions, they use two policies, one for decision-making and one for caching replacement. The first one decides with the \ac{mfo-ec} algorithm on a time intervall what data should be cached where. The replacement policy states which data should be deleted, if the cache, the decision-making policy selected, is full. The \ac{sdn} Controller uses topology information and \ac{iot} data to make caching decisions. The algorithm also uses the content freshness and the content popularity as features to make caching descions. From these two features, a caching weights are calculated, which are then used by the \ac{mfo-ec} algorithm. 
-	To create a efficient environment to be able to process massive amounts of data, the authors propose to use \ac{iot} clusters. It further reduces the latency and energy consumption in the network, which leads to better \ac{qoe} for the users. Edge networks are created to be able to better use and share their computational power and resources. With the \ac{sdn} Controller this complexity is hidden to the users. The MFO-CHS algorithm is used to dynamically select the cluster heads. Selecting the best cluster head brings lower end-to-end latency and packet drops. The algorithm tries to select the "fitest" node in the cluster and ensure that the network's energy consumption is at the minimum. For the fitness function, the distance between nodes, the residual energy of the node the priority assigned to the node is taken into account by the \ac{mfo-chs} algorithm. Nodes get priority if they need lower latency or transfer critical data. The clusters are changing over time, adapting to the state of the network. After simulating, the authors found out that their proposed caching strategy outperforms other caching strategies in terms of energy consumption, cache hit rate and average response latency. You can see the results in figures \ref{fig:energy-caching}, \ref{fig:latency-caching} and \ref{fig:latency-caching}. They compare their architecture to different caching strategies. The best architecture the \ac{mfo} architecture is compard to, is a lifetime-based architecture called \ac{lcc} from \cite{caching-6}, which proposes a caching strategy based on the lifetime and popularity of the data, but without using \ac{sdn} like the presented strategy \cite{caching-2} in section \ref{sec:lifetime-caching}. You can see that it outperforms the \ac{lcc} strategy in all three metrics by a bit. The evaluation shows that using the moth-flame algorithm and clustering the network improves the network efficiency.
+	To create a efficient environment to be able to process massive amounts of data, the authors propose to use \ac{iot} clusters. It further reduces the latency and energy consumption in the network, which leads to better \ac{qoe} for the users. Edge networks are created to be able to better use and share their computational power and resources. With the \ac{sdn} Controller this complexity is hidden to the users. The MFO-CHS algorithm is used to dynamically select the cluster heads. Selecting the best cluster head brings lower end-to-end latency and packet drops. The algorithm tries to select the "fitest" node in the cluster and ensure that the network's energy consumption is at the minimum. For the fitness function, the distance between nodes, the residual energy of the node the priority assigned to the node is taken into account by the \ac{mfo-chs} algorithm. Nodes get priority if they need lower latency or transfer critical data. The clusters are changing over time, adapting to the state of the network. After simulating, the authors found out that their proposed caching strategy outperforms other caching strategies in terms of energy consumption, cache hit rate and average response latency. You can see the results in figures \ref{fig:energy-caching}, \ref{fig:latency-caching} and \ref{fig:hitrate-caching}. They compare their architecture to different caching strategies. The best architecture the \ac{mfo} architecture is compard to, is a lifetime-based architecture called \ac{lcc} from \cite{caching-6}, which proposes a caching strategy based on the lifetime and popularity of the data, but without using \ac{sdn} like the presented strategy \cite{caching-2} in section \ref{sec:lifetime-caching}. You can see that it outperforms the \ac{lcc} strategy in all three metrics by a bit. The evaluation shows that using the moth-flame algorithm and clustering the network improves the network efficiency.
 
 	\begin{figure}
 		\centering
@@ -270,7 +268,7 @@ x		\centering
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/hitrate-caching.png}
 		\caption{Hit Ratio VS cache size \cite{caching-1}}
-		\label{fig:latency-caching}
+		\label{fig:hitrate-caching}
 	\end{figure}
 
 	\section{Conclusion}
@@ -278,36 +276,36 @@ x		\centering
 
 	After introducing the topic, we summerized the concept of \ac{sdn} and looked at applications, its adventages and challanges. Then we focused on the usage of \ac{sdn} in \ac{iot} applications and why it helps to overcome problems of \ac{iot} applications on a large scale. We focused on using edge caching managed by a \ac{sdn} controller to improve the network efficiency. We presented three different papers showing the evolution of caching strategies in \ac{iot} networks with \ac{sdn}. The first paper \cite{caching-7} proposed a caching strategy for \ac{isp} networks using the contents priority to make caching descions for the edge nodes. The second paper \cite{caching-2} extended the caching policy by using the priority and the lifetime of the data to make caching decisions. The third paper \cite{caching-1} proposed a caching strategy, taking priority and lifetime of the data into account, using the \ac{mfo} algorithm and clustering the network to improve the efficiency even more.
 
-	\printbibliography
-	\begin{acronym}
-		\acro{sdn}[SDN]{Software-defined Networking}
-		\acro{iot}[IoT]{Internet of Things}
-		\acro{onf}[ONF]{Open Networking Foundation}
-		\acro{tls}[TLS]{Transport Layer Security}
-		\acro{api}[API]{Application Programming Interface}
-		\acroplural{api}[APIs]{Application Programming Interfaces}
-		\acro{tcp}[TCP]{Transmission Control Protocol}
-		\acro{wsnsdn}[WSNSDN]{Software-Defined Wireless Sensor Network Framework }
-		\acro{bs}[BS]{Base Station}
-		\acro{sof}[SOF]{Sensor OpenFLow}
-		\acro{mfo}[MFO]{Moth-Flame Optimization}
-		\acro{ilp}[ILP]{Integer Linear Programming}
-		\acro{mpc}[MPC]{Most Popular Contents}
-		\acro{mpfc}[MPFC]{Most Popular Fresh Contents}
-		\acro{mfo-ec}[MFO-EC]{Moth-Flame Optimization-Edge Caching}
-		\acro{mfo-chs}[MFO-CHS]{Moth-Flame Optimization-Cluster Head Selection}
-		\acro{lcc}[LCC]{Lifetime-based Cooperative Caching}
-		\acro{sccn}[SCCN]{SDN-based Cooperative Cache Network}
-		\acro{isp}[ISP]{Internet Service Provider}
-		\acro{ra}[RA]{Relaxation Algorithm}
-		\acro{ha}[HA]{Heuristice Algorithm}
-		\acro{lgg}[LGG]{Local-Greedy-Gen Algorithm}
-		\acro{lg}[LG]{Local-Greedy Algorithm}
-		\acro{sit}[SIT]{Switch Information Table}
-		\acro{cit}[CIT]{Content Information Table}
-		\acro{icit}[ICIT]{Incremental Content Information Table}
-		\acro{qoe}[QoE]{Quality of Experience}
-	\end{acronym}
+\printbibliography
+\begin{acronym}
+	\acro{sdn}[SDN]{Software-defined Networking}
+	\acro{iot}[IoT]{Internet of Things}
+	\acro{onf}[ONF]{Open Networking Foundation}
+	\acro{tls}[TLS]{Transport Layer Security}
+	\acro{api}[API]{Application Programming Interface}
+	\acroplural{api}[APIs]{Application Programming Interfaces}
+	\acro{tcp}[TCP]{Transmission Control Protocol}
+	\acro{wsnsdn}[WSNSDN]{Software-Defined Wireless Sensor Network Framework}
+	\acro{bs}[BS]{Base Station}
+	\acro{sof}[SOF]{Sensor OpenFLow}
+	\acro{mfo}[MFO]{Moth-Flame Optimization}
+	\acro{ilp}[ILP]{Integer Linear Programming}
+	\acro{mpc}[MPC]{Most Popular Contents}
+	\acro{mpfc}[MPFC]{Most Popular Fresh Contents}
+	\acro{mfo-ec}[MFO-EC]{Moth-Flame Optimization-Edge Caching}
+	\acro{mfo-chs}[MFO-CHS]{Moth-Flame Optimization-Cluster Head Selection}
+	\acro{lcc}[LCC]{Lifetime-based Cooperative Caching}
+	\acro{sccn}[SCCN]{SDN-based Cooperative Cache Network}
+	\acro{isp}[ISP]{Internet Service Provider}
+	\acro{ra}[RA]{Relaxation Algorithm}
+	\acro{ha}[HA]{Heuristice Algorithm}
+	\acro{lgg}[LGG]{Local-Greedy-Gen Algorithm}
+	\acro{lg}[LG]{Local-Greedy Algorithm}
+	\acro{sit}[SIT]{Switch Information Table}
+	\acro{cit}[CIT]{Content Information Table}
+	\acro{icit}[ICIT]{Incremental Content Information Table}
+	\acro{qoe}[QoE]{Quality of Experience}
+\end{acronym}
 
 % that's all folks
 \end{document}
