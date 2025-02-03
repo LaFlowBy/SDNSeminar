@@ -1,4 +1,4 @@
-
+ 
 
 \documentclass[conference]{IEEEtran}
 
@@ -8,7 +8,6 @@
 \addbibresource{sdn.bib}
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
-
 
 \begin{document}
 	%
@@ -31,17 +30,17 @@
 
 	\begin{abstract}
 	%\boldmath
-	The abstract goes here.
+	\ac{iot} applications are generating huge amount of data. To be able to process the data efficiently, new strategies are needed. Caching data at the edge of the network turnd out to lower the energy consumption, reduce the network latency and lower request to the core network in the cloud. \ac{sdn} is a technology that fits to manage the caching strategies and hide the complexity to the users. In this paper we will summerize \ac{sdn} witch it's advantages and challenges, general applications as well as applicaitons in \ac{iot}. We will compare different caching strategies using \ac{sdn} for \ac{iot} applications, showing the development of archtectures over time. The first architecture is a early approach using \ac{sdn} for cooperative caching in \ac{isp} networks, using the priority of the data to make the caching descions. The second architecture also considers the lifetime of data in a transient \ac{iot} network. The third architecture uses the \ac{mfo} algorithm to optimize the caching strategy and clusters the network to get a better \ac{qoe}.
 	\end{abstract}
 
 	\begin{IEEEkeywords}
-	\ac{sdn}, \ac{iot}, caching
+	\ac{sdn}, \ac{iot}, edge caching
 	\end{IEEEkeywords}
 
 	\IEEEpeerreviewmaketitle
 
 	\section{Introduction}
-	\label{section:introduction}
+	\label{sec:introduction}
 
 	With the development of the internet and the increasing complexity of networks, the management and configuration of them become more complex and time consuming. Technologies like moblie networks, cloud computing, multimedia applications and virtualization have a high need of bandwidth, high accessibility and dynamic network configurations. These requirements are a challenge for traditional networks. 
 
@@ -51,23 +50,23 @@
 	A very popular strategy to optimize the usage of \ac{iot} network resources is edge caching. Also there \ac{sdn} Controllers can help to manage caching decision based on the global view of the network and hiding the complexity of the network from the end users. With egde caching, \ac{sdn} nodes are used to cache data to reduce latency and energy consumption of the network. Different architectures try to miximize the cache hitrate. The imporvement of edge caching with \ac{sdn} will be shown, by comparing three different caching strategies.
 
 
-	In this paper we will first summerize the concept of \ac{sdn} and look at applications and challanges In Section \ref{section:sdn-iot} we will focus on the usage of \ac{sdn} in \ac{iot} applications. In Section \ref{section:caching} we then deep dive even more into caching approaches with \ac{sdn} for \ac{iot} applications. Multible caching strategies will be compared. Finally, we will conclude our findings in Section \ref{section:conclusion}. 
+	In this paper we will first summerize the concept of \ac{sdn} and look at applications, advantages and challanges. In section \ref{sec:sdn-iot} we will focus on the usage of \ac{sdn} in \ac{iot} applications and which problems \ac{sdn} can solve. In section \ref{sec:caching} we deep dive  into edge caching approaches using a \ac{sdn} Controller in \ac{iot} applications. We look at three different architectures showing the development of the edge caching with \ac{sdn}. For each one the architecture is described, the proposed improvemnts explained and the evaluation presented. Finally, we will conclude our findings in section \ref{sec:conclusion}. 
 
 	\section{\ac{sdn}}
-	\label{section:sdn}
+	\label{sec:sdn}
 
 	\begin{figure}
-		\label{fig:architecture-compare}
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/architecture-compare.png}
 		\caption{Traditional Architecture and \ac{sdn} Architecture \cite{Jefia2018-pj}}
+		\label{fig:architecture-compare}
 	\end{figure}
 
 	\begin{figure}
-		\label{fig:flow-table}
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/flow-table.png}
 		\caption{Flow Table Entry Representation \cite{nunez2023briefoverviewsoftwaredefinednetworking}}
+		\label{fig:flow-table}
 	\end{figure}
 
 	\begin{quote}
@@ -104,7 +103,7 @@
 
 
 	\section{Using \ac{sdn} in \ac{iot} Applications}
-	\label{section:sdn-iot}
+	\label{sec:sdn-iot}
 
 	\acf{iot} connects devices with limited resources to create various services. \ac{iot} applications are created to mostly collect data and execute tasks for multiple domains, like industrial process systems, traffic monitoring and a large variety  of end-user applications. Often they result in large-scale networks with many heterogeneous devices and protocols. \cite{Li2020-lx} \citeauthor{Li2020-lx} identified that \ac{iot} faces the following problems: 
 
@@ -139,7 +138,7 @@
 	\cite{8777339} \cite{Sahrish2017}
 
 	\section{Caching in \ac{iot} with \ac{sdn}}
-	\label{section:caching}
+	\label{sec:caching}
 
 	Next to edge computing, caching data on the edges of the network is another strategy to optimize the usage of network resources, ensuring lower network latency, energy consumption and higher availability. \cite{caching-1} \cite{caching-2} \cite{caching-4} Without caching, popular content will be transmitted repeatedly, wasting network resources. Especially devices receiving the same information simultaneously. Often the content needs to be location-sensitive, displaying different information on different locations of the world and often the cached contents are only used by the devices in the same areas. To demonstrate the effect of caching  for latency and energy consumption we can look at the results of the caching strategy proposed by \cite{caching-1}. In figure \ref{fig:energy-caching} you can see that the total energy consumption decreases with the cache size. With no caching the energy consumption stays the same. If you use caching, for all strategies the energy consumption decreases significantly by increasing the cache size. The same is shown in figure \ref{fig:latency-caching} for the average response latency. The constant latency with no caching is reduced by caching by more than half.
 
@@ -177,62 +176,107 @@
 
 	The following chapters will present different approaches for caching data in \ac{iot} networks with \ac{sdn} at the edge.
 
+	\subsection{Early approach using \ac{sdn} for cooperative caching in \ac{isp} networks}
+	\label{sec:priority-caching}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/sccn-architecture.png}
+		\caption{The operation mechanism of SCCN \cite{caching-7}}
+		\label{fig:sccn-architecture}
+	\end{figure}
+
+	In \citeyear{caching-7} \cite{caching-7} proposes \ac{sccn} for \ac{isp} networks using a \ac{sdn} Controller. They propose a \ac{ra} based on a relaxation-rounding technique \cite{ra} to solve the caching problem. They also provide a \ac{ha} based on the concept of Circular Convex Set \cite{heuristcs} to provide a efficient solution usable for practical large scale systems. The \ac{sccn} is implemented with Open vSwitch and Ryu controller.
+
+	\begin{quote}
+		"[The] SCCN Controller can detect the most popular contents at the global level, perform intensive computations of content placement decisions and populate new request forward directions to SCCN Switches quickly" \cite{caching-7}
+	\end{quote}
+
+	You can see the proposed architecture in figure \ref{fig:sccn-architecture}. The Controller stores three tables of collected data from the network. The \ac{sit} stores information about the switches containing cache capacity and bandwidth. The \ac{cit} tracks cached contents and calculated request counts and the \ac{icit} stores information about recently requestet data that wasn't cached yet. The Controller makes periodic content placement descions based on the information in these tables. When the requested frequency  of a content exceeds a threshold within a time period, an additional caching descion is triggered. 
+	If a request is received by a edge node and the data isn't stored, it is forewarded to the Controller, which fetches the data and updates the flow table for future routing. The evaluation of \ac{sccn} compares the \ac{ra} and \ac{ha} algorithm with two algorithms proposed in \cite{caching-8}. The \ac{lg}  has a full replication strategy and caches the K most popular contents for itself. \ac{lgg} doesn't use a replication strategy and only stores a single copy of each content in the network.
+	In figure \ref{fig:sccn-result} you can see the results of the evaluation with different cache sizes. You can see that the acceleration ratio (ratio between the saved transmission delay and the original internet delay) and traffic ratio (the ratio between the saved traffic and desired traffic). The \ac{ra} and \ac{ha} algorithm outperform the \ac{lg} and \ac{lgg} algorithm in the acceleration ration over all cache sizes. The \ac{ra} and \ac{ha} have very similar results, showing that the \ac{ha} algorithm is a good approximation for the \ac{ra} algorithm and shoud be used in large scale systems. The \ac{ra} and \ac{ha} algorithm has a similar traffic ratio than the \ac{lgg}, all outperforming the \ac{lg}. The evaluation also states, that the average internet delay, impact of request patterns and large problem sizes don't really affect the better performance of \ac{sccn}.
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/sccn-result.png}
+		\caption{Acceleration ratio and traffic ratio with different cache size \cite{caching-7}}
+		\label{fig:sccn-result}
+	\end{figure}
+
+
 	\subsection{Using the lifetime for a caching decision}
+	\label{sec:lifetime-caching}
+
 	In \citeyear{caching-2} \cite{caching-2} proposes a caching policy also using a \ac{sdn}-controller. 
 	\begin{quote}
 		"Such a policy identifies the \textit{IoT contents} to be cached and \textit{the cachers}, by \textit{jointly} accounting for the \textit{IoT content popularity and lifetime}" \cite{caching-2} 
 	\end{quote}
 
-	Their goal was to prioritze the cache hit ration for the most popular contents which have a longer lifetime expectancy. The policy should reduce the retreival latency and maximaize the content diversity available at the edge domain. The policy should run as a network application on top of the \ac{sdn} Controller using the OpenFlow protocol for the southbound interface. They define the optimal content placement through an \ac{ilp} problem, that include their named objectives. They claim to be the first caching optimization aproach in a distributed edge domain, that are taking the popularity and the lifetime of \ac{iot} data into account. The idea is, that caching very popular content with only a very short lifetime left is less usefull than less popular content with a longer lifetime. Over the longer livetime it may have more total requests that the popular one.
+	Their goal was to prioritze the cache hit ratio for the most popular contents which have a longer lifetime expectancy. The policy should reduce the retreival latency and maximaize the content diversity available at the edge domain even more. The policy should run as a network application on top of the \ac{sdn} Controller using the OpenFlow protocol for the southbound interface. They define the optimal content placement through an \ac{ilp} problem, that include their named objectives. They claim to be the first caching optimization aproach in a distributed edge domain, that are taking the popularity and the lifetime of \ac{iot} data into account. The idea is, that caching very popular content with only a very short lifetime left is less usefull than less popular content with a longer lifetime. Over the longer livetime the data may have more total requests that the popular one.
 	The \ac{sdn} Controller instructs the caching actions at regular intervals. Due to the change of popularity over time \cite{caching-5} they decided to set the intervall at 60 minutes. The \ac{sdn} nodes are then storing the data unitl the data lifetime expires or a new caching decision is made. The \ac{sdn} controller monitors the topology and measures the packet loss probability and the link delay to estimate the content retreival latency. Using the OpenFlow protocol it also monitors the capabilities and content statistics of the \ac{sdn} nodes. That gives information about the amount of flow table entries or buffer sizes of the switches. Also the request arrival rates is summed up, by giving the Controller information about all content requests. These informations are used to make the caching decisions.
-	If a node needs to get certain data, it sends a request to the controller, which injects the forwarding rules into the flow table of the \ac{sdn} node, so that it can retreive the data from the cacher directly. To maximize the content diversity, they store only one content copy in the edge network. That reduces traffic transit costs, because more space is available for distinct data and therefore less traffic has to leave the domain requesing data at the cloud. The ability of the \ac{sdn} Controller to use load balancing helps against intra-domain congestion problems. 
-	For the optimal content placement they formulate the problem as an \ac{ilp} problem. It is a NP-hard problem, which makes it computationally intensive and impractical for large-scale applications.Therefore, they propose a heuristic algorithm using a greedy approach to find near-optimal solutions more efficiently. This heuristic evaluates factors such as node storage capacity, network link bandwidth, and the transient nature and popularity of IoT content to make caching decisions.
-	The evaluation of their caching policy shows that it outperforms other caching strategies in terms of cache hit ratio, content diversity, and retrieval latency. They tested their solution in three scenarios to the benchmark of \ac{mpc} which is an aproach not concidering the lifetime of the data into the caching decisions.
-	In all three scenarios \ac{mpfc} achieved lower content retreival latency, higher cache hit rates and higher freshness probabilities.
-	In figures \ref{fig:lifetime-latency}, \ref{fig:lifetime-hitrate} and \ref{fig:lifetime-freshness} you can see the results of the first scenario. You can see that the content retrieval latency and the cache hit rate from \ac{mpfc}(black lines) is better on all cache sizes than \ac{mpc}(blue lines). For the freshnes probability, with increasing cache size, the freshness probability of \ac{mpfc} equals to \ac{mpc}.
+	If a node needs to get certain data, it sends a request to the controller, which injects the forwarding rules into the flow table of the \ac{sdn} node, so that it can retreive the data from the cacher directly. To maximize the content diversity, they store only one content copy in the edge network, similar like the \ac{lgg} algorithm of \cite{caching-8}. That reduces traffic transit costs, because more space is available for distinct data and therefore less traffic has to leave the domain requesing data at the cloud. The ability of the \ac{sdn} Controller to use load balancing helps against intra-domain congestion problems. 
+	For the optimal content placement they formulate the problem as an \ac{ilp} problem. It is a NP-hard problem, which makes it computationally intensive and impractical for large-scale applications. Therefore, they propose a heuristic algorithm using a greedy approach to find near-optimal solutions more efficiently. This heuristic evaluates factors such as node storage capacity, network link bandwidth, and the transient nature and popularity of IoT content to make caching decisions.
+	The evaluation of their caching policy shows that it outperforms other caching strategies in terms of cache hit ratio, content diversity, and retrieval latency. They tested their solution in three scenarios to the benchmark of \ac{mpc} which is an aproach based on the discussed algorithm of \cite{caching-8} in section \ref{sec:priority-caching}. In all three scenarios \ac{mpfc} achieved lower content retreival latency, higher cache hit rates and higher freshness probabilities.
+	In figures \ref{fig:lifetime-latency}, \ref{fig:lifetime-hitrate} and \ref{fig:lifetime-freshness} you can see the results of the first scenario. You can see that the content retrieval latency and the cache hit rate from \ac{mpfc}(black lines) is better on all cache sizes than \ac{mpc}(blue lines). For the freshnes probability, with increasing cache size, the freshness probability of \ac{mpfc} equals to \ac{mpc}. The paper proves that the usage of the content's lifetime is improving the caching descions in \ac{iot} networks.
 
 	\begin{figure}
-		\label{fig:lifetime-latency}
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/fresh-latency.png}
 		\caption{Average content retrieval latency \cite{caching-2}}
+		\label{fig:lifetime-latency}
 	\end{figure}
 	\begin{figure}
-		\label{fig:lifetime-hitrate}
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/fresh-hitrate.png}
 		\caption{Average content retrieval latency \cite{caching-2}}
+		\label{fig:lifetime-hitrate}
 	\end{figure}
 	\begin{figure}
-		\label{fig:lifetime-freshness}
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/fresh-freshness.png}
 		\caption{Average content retrieval latency \cite{caching-2}}
+		\label{fig:lifetime-freshness}
 	\end{figure}
 
 	\subsection{Moth-flame optimization algorithm}
-	In \cite{caching-1} from \citeyear{caching-1} the authors propose a caching strategy using the \ac{mfo}. It is a population-based metaheurist metaheuristic inspired by the navigation behavior of moths. Light sources cause moths to fly in a straight line toward them and fly spirally around a light source when very close. They are using the algorithm to group similar content and determine the optimal locations for caching certain data. They also cluster the edge nodes and select cluster heads using their propsed algorithm \ac{mfo-chs}. It furhter reduces the latency and energy consumption in the network.
-	In their architecture, also uses \ac{sdn} with a centralized \ac{sdn} Controller. For southbound communication it also uses the OpenFlow protocol and for the northbound interface RESTful APIs. For the caching decisions, they use two policies, one for decision-making and one for caching replacement. The first one decides with the \ac{mfo-ec} algorithm on a time intervall what data should be cached where. The replacement policy states which data should be deleted, if the cache, the decision-making policy selected, is full. The \ac{sdn} Controller uses topology information and \ac{iot} data to make caching decisions. The algorithm also uses the content freshness and the content popularity as features to make caching descions. From these two features, a caching weights are calculated, which are then used by the \ac{mfo-ec} algorithm. 
-	To create a efficient environment to be able to process massive amounts of data, the authors propse to use \ac{iot} clusters. That should bring a better quality of experience to users. Edge networks are created to be able to better use and share their computational power and resources. With the \ac{sdn} Controller this complexity is hidden to the users. The MFO-CHS algorithm is used to dynamically select the cluster heads. Selecting the best cluster head brings lower end-to-end latency and packet drops. The algorithm tries to select the "fittest" node in the cluster and ensure that the network's energy consumption is at the minimum.  
+	\label{sec:mfo-caching}
 
 	\begin{figure}
-		\label{fig:energy-caching}
+x		\centering
+		\includegraphics[width=0.5\textwidth]{figures/mfo-architecture.png}
+		\caption{The structure of the proposed model \cite{caching-1}}
+		\label{fig:mfo-architecture}
+	\end{figure}
+
+	In \cite{caching-1} from \citeyear{caching-1} the authors propose a caching strategy using the \acf{mfo} and cluster the network to get a better \acf{qoe}. It is a population-based metaheuristic inspired by the navigation behavior of moths. Light sources cause moths to fly in a straight line toward them and fly spirally around a light source when very close. They are using the algorithm to group similar content and determine the optimal locations for caching certain data. They cluster the edge nodes and select cluster heads using their propsed algorithm \ac{mfo-chs}.
+	In their architecture, also uses \ac{sdn} with a centralized \ac{sdn} Controller. For southbound communication it uses the OpenFlow protocol and for the northbound interface RESTful APIs. In figure \ref{fig:mfo-architecture} the network architecture is displayed. You can see three layers. The lowest layer are the \ac{iot} devices like sensors or actuators, clusterd. Each one is connected to a \ac{sdn} edge node on the edge computing layer. Here the caches are installed. The nodes are connected to the \ac{sdn} Controller, seeing an overview of the network. The locally distributed \ac{sdn} Controllers are connected to the global \ac{sdn} Controller being in the cloud computing layer. It is coordinating the physical ditribution of the \ac{sdn} Controllers and communication to the cloud. 
+	For the caching decisions, they use two policies, one for decision-making and one for caching replacement. The first one decides with the \ac{mfo-ec} algorithm on a time intervall what data should be cached where. The replacement policy states which data should be deleted, if the cache, the decision-making policy selected, is full. The \ac{sdn} Controller uses topology information and \ac{iot} data to make caching decisions. The algorithm also uses the content freshness and the content popularity as features to make caching descions. From these two features, a caching weights are calculated, which are then used by the \ac{mfo-ec} algorithm. 
+	To create a efficient environment to be able to process massive amounts of data, the authors propose to use \ac{iot} clusters. It further reduces the latency and energy consumption in the network, which leads to better \ac{qoe} for the users. Edge networks are created to be able to better use and share their computational power and resources. With the \ac{sdn} Controller this complexity is hidden to the users. The MFO-CHS algorithm is used to dynamically select the cluster heads. Selecting the best cluster head brings lower end-to-end latency and packet drops. The algorithm tries to select the "fitest" node in the cluster and ensure that the network's energy consumption is at the minimum. For the fitness function, the distance between nodes, the residual energy of the node the priority assigned to the node is taken into account by the \ac{mfo-chs} algorithm. Nodes get priority if they need lower latency or transfer critical data. The clusters are changing over time, adapting to the state of the network. After simulating, the authors found out that their proposed caching strategy outperforms other caching strategies in terms of energy consumption, cache hit rate and average response latency. You can see the results in figures \ref{fig:energy-caching}, \ref{fig:latency-caching} and \ref{fig:latency-caching}. They compare their architecture to different caching strategies. The best architecture the \ac{mfo} architecture is compard to, is a lifetime-based architecture called \ac{lcc} from \cite{caching-6}, which proposes a caching strategy based on the lifetime and popularity of the data, but without using \ac{sdn} like the presented strategy \cite{caching-2} in section \ref{sec:lifetime-caching}. You can see that it outperforms the \ac{lcc} strategy in all three metrics by a bit. The evaluation shows that using the moth-flame algorithm and clustering the network improves the network efficiency.
+
+	\begin{figure}
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/energy-caching.png}
 		\caption{Total Energy Consumption (mJ) VS cache size \cite{caching-1}}
+		\label{fig:energy-caching}
 	\end{figure}
 
 	\begin{figure}
-		\label{fig:latency-caching}
 		\centering
 		\includegraphics[width=0.5\textwidth]{figures/latency-caching.png}
 		\caption{Average Response latency (sec) VS cache size \cite{caching-1}}
+		\label{fig:latency-caching}
+	\end{figure}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.5\textwidth]{figures/hitrate-caching.png}
+		\caption{Hit Ratio VS cache size \cite{caching-1}}
+		\label{fig:latency-caching}
 	\end{figure}
 
 	\section{Conclusion}
-	\label{section:conclusion}
+	\label{sec:conclusion}
 
-	\ac{sdn} is great. It brings a lot of advantages...
+	After introducing the topic, we summerized the concept of \ac{sdn} and looked at applications, its adventages and challanges. Then we focused on the usage of \ac{sdn} in \ac{iot} applications and why it helps to overcome problems of \ac{iot} applications on a large scale. We focused on using edge caching managed by a \ac{sdn} controller to improve the network efficiency. We presented three different papers showing the evolution of caching strategies in \ac{iot} networks with \ac{sdn}. The first paper \cite{caching-7} proposed a caching strategy for \ac{isp} networks using the contents priority to make caching descions for the edge nodes. The second paper \cite{caching-2} extended the caching policy by using the priority and the lifetime of the data to make caching decisions. The third paper \cite{caching-1} proposed a caching strategy, taking priority and lifetime of the data into account, using the \ac{mfo} algorithm and clustering the network to improve the efficiency even more.
 
 	\printbibliography
 	\begin{acronym}
@@ -252,7 +296,17 @@
 		\acro{mpfc}[MPFC]{Most Popular Fresh Contents}
 		\acro{mfo-ec}[MFO-EC]{Moth-Flame Optimization-Edge Caching}
 		\acro{mfo-chs}[MFO-CHS]{Moth-Flame Optimization-Cluster Head Selection}
-
+		\acro{lcc}[LCC]{Lifetime-based Cooperative Caching}
+		\acro{sccn}[SCCN]{SDN-based Cooperative Cache Network}
+		\acro{isp}[ISP]{Internet Service Provider}
+		\acro{ra}[RA]{Relaxation Algorithm}
+		\acro{ha}[HA]{Heuristice Algorithm}
+		\acro{lgg}[LGG]{Local-Greedy-Gen Algorithm}
+		\acro{lg}[LG]{Local-Greedy Algorithm}
+		\acro{sit}[SIT]{Switch Information Table}
+		\acro{cit}[CIT]{Content Information Table}
+		\acro{icit}[ICIT]{Incremental Content Information Table}
+		\acro{qoe}[QoE]{Quality of Experience}
 	\end{acronym}
 
 % that's all folks
